@@ -37,6 +37,11 @@ export default function Home() {
     })
   }
 
+  const logout = () => {
+    AuthService.logout()
+    route.push('/login');
+  }
+
   return (
     <div style={{marginTop: '150px', marginLeft: '40px'}}>
       <ol>
@@ -60,6 +65,9 @@ export default function Home() {
         type="text"
         />
       <button onClick={addChecklist}>Tambah Checklist</button>
+
+
+      <button className="mt-5 d-block" onClick={logout}>Logout</button>
     </div>
   )
 }

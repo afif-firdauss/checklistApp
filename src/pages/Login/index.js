@@ -29,8 +29,8 @@ export default function Login() {
           route.push("/");
         })
         .catch((err) => {
-          setError(err.data.errorMessage);
-          // console.log(err.errorMessage, 'error')
+          // setError(err.data.errorMessage);
+          console.log(err, 'error')
         });
     }
   };

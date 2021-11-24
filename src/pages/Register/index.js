@@ -22,7 +22,8 @@ export default function Register() {
           route.push("/login");
         })
         .catch((err) => {
-          setError(err.data.errorMessage);
+          // setError(err.data.errorMessage);
+          console.log(err, 'error')
         });
     }
   };
