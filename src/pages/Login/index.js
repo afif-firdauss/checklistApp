@@ -13,8 +13,8 @@ export default function Login() {
   const user = AuthService.getCurrentUser();
 
   React.useEffect(() => {
-    if (user && user.accessToken) {
-      route.goBack();
+    if (user) {
+      route.push('/');
     }
   }, [user, route]);
 

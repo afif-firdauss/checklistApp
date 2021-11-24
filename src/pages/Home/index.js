@@ -1,17 +1,23 @@
 import React, { useEffect } from 'react'
 import dataServices from '../../config/Services/data.services';
+import { useHistory } from "react-router";
+import AuthService from '../../config/Services/auth.service'
 
 export default function Home() {
+  const route = useHistory();
   const [name, setName] = React.useState('')
   const [item, setItem] = React.useState()
-  
+  const user = AuthService.getCurrentUser();
 
   useEffect(() => {
-    dataServices.getChecklist().then(res => {
-      // console.log(res, 'res');
-      setItem(res.data.data)
-    })
-  }, []);
+    if(user){
+      dataServices.getChecklist().then(res => {
+        setItem(res.data.data)
+      })
+    } else {
+      route.push('/login');
+    }
+  }, [route, user]);
 
   const addChecklist = () => {
     if(name !== ''){
